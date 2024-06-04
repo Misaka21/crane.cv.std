@@ -29,9 +29,11 @@ int main()
 			std::cerr << "Error: Blank frame grabbed" << std::endl;
 			break;
 		}
+		std::vector<cv::Rect> woodRects;
+		std::vector<cv::Point2f> weights;
 		detector.createTrackbars();
-		detector.wood_detect(frame);
-		detector.detect_weights(frame);
+		woodRects=detector.wood_detect(frame);
+		weights=detector.detect_weights(frame);
 
 		// 显示帧
 		cv::imshow("Webcam", frame);

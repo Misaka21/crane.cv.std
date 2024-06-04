@@ -63,7 +63,7 @@ auto detector::wood_detect(cv::Mat &img) -> std::vector<cv::Rect>
     return detectedRectangles; // 返回检测到的矩形集合
 }
 // 定义一个用于识别和标注圆形的函数
-autp detector::detect_weights(cv::Mat &inputImage)->std::vector<cv::Point2f>
+auto detector::detect_weights(cv::Mat &inputImage)->std::vector<cv::Point2f>
 {
     // 转换为灰度图
     cv::Mat gray;
