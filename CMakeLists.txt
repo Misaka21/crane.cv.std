@@ -8,7 +8,11 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(crane_cv_std main.cpp
         detector.cpp
         detector.h
-        main.h)
+        main.h
+        serial.cpp
+        serial.h
+        handeye.cpp
+        handeye.h)
 
 find_package(OpenCV REQUIRED)
 target_link_libraries(crane_cv_std ${OpenCV_LIBS})

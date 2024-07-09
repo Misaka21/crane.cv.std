@@ -66,7 +66,7 @@ auto detector::wood_detect(cv::Mat &img) -> std::vector<cv::Rect>
 auto detector::detect_weights(cv::Mat &inputImage)->std::vector<cv::Point2f>
 {
     // 转换为灰度图
-    cv::Mat gray;
+    cv::Mat gray,frame=inputImage.clone();
     cv::cvtColor(inputImage, gray, cv::COLOR_BGR2GRAY);
 
     // 二值化，目标为黑色区域
@@ -104,22 +104,22 @@ auto detector::detect_weights(cv::Mat &inputImage)->std::vector<cv::Point2f>
             if (circularity > 0.8)
             { // 筛选圆形
                 // 绘制圆心
-                cv::circle(inputImage, center, 2, cv::Scalar(0, 0, 255), -1);
+                cv::circle(frame, center, 2, cv::Scalar(0, 0, 255), -1);
                 // 绘制圆边界
-                cv::circle(inputImage, center, radius, cv::Scalar(0, 255, 0), 2);
+                cv::circle(frame, center, radius, cv::Scalar(0, 255, 0), 2);
 
                 // 标注信息：圆心坐标和面积
                 std::string centerText = "Center: (" + std::to_string((int)center.x) + ", " + std::to_string((int)center.y) + ")";
                 std::string areaText = "Area: " + std::to_string((int)area);
 
-                cv::putText(inputImage, centerText, cv::Point(center.x + 10, center.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
-                cv::putText(inputImage, areaText, cv::Point(center.x + 10, center.y + 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+                cv::putText(frame, centerText, cv::Point(center.x + 10, center.y - 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+                cv::putText(frame, areaText, cv::Point(center.x + 10, center.y + 10), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
                 detectedCenters.push_back(center); // 添加圆心到向量中
             }
         }
     }
 
     // 显示结果
-    cv::imshow("Detected Circles", inputImage);
+    cv::imshow("Detected-6", frame);
     return detectedCenters; // 返回检测到的圆心点集
 }

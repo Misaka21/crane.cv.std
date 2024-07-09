@@ -18,6 +18,7 @@ int main()
 	cv::namedWindow("Webcam", cv::WINDOW_AUTOSIZE);
 
 	detector detector;
+	handeye lefthand;
 	// 持续读取帧
 	while (true)
 	{
@@ -35,6 +36,8 @@ int main()
 		woodRects=detector.wood_detect(frame);
 		weights=detector.detect_weights(frame);
 
+		lefthand.detect_weight (frame);
+		lefthand.Display (frame);
 		// 显示帧
 		cv::imshow("Webcam", frame);
 

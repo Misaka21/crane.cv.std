@@ -6,4 +6,6 @@
 #define CRANE_CV_STD_MAIN_H
 
 #include "detector.h"
+
+#include "handeye.h"
 #endif //CRANE_CV_STD_MAIN_H
