@@ -35,6 +35,8 @@ int main()
 		woodRects=detector.wood_detect(frame);
 		weights=detector.detect_weights(frame);
 
+		
+
 		// 显示帧
 		cv::imshow("Webcam", frame);
 
